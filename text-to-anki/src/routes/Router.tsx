@@ -3,8 +3,8 @@ import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { routsLinks } from "./routsLinks";
 
-const AddNewText = React.lazy(()=>import("../Pages/AddNewText/AddNewText"));
-
+const AddNewText    = React.lazy(()=>import("../Pages/AddNewText/AddNewText"));
+const MainPage      = React.lazy(()=>import("../Pages/MainPage/MainPage"));
 
 const SiteRoute = ()=>{
 
@@ -13,6 +13,7 @@ const SiteRoute = ()=>{
         <Suspense fallback={"Loading..."}>
         <Routes>
             <Route path={routsLinks.NEW_TEXT} element={<AddNewText />} />
+            <Route path={routsLinks.MAIN_PAGE} element={<MainPage />} />
         </Routes>
         </Suspense>
     )
