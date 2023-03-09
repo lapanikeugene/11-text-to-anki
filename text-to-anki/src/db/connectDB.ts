@@ -1,6 +1,6 @@
 import Dexie, {Table} from "dexie"
 
-export interface text{
+export interface textInDb{
     id?:number,
     title:string,
     content:string,
@@ -8,7 +8,7 @@ export interface text{
 
 export class TextDexie extends Dexie
 {
-    texts:Dexie.Table<text, number> ;
+    texts:Dexie.Table<textInDb, number> ;
 
     constructor(){
         super("myTexts");
