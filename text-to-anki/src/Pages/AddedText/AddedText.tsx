@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useDBConnection } from "../../hooks/dbConnection";
 import { routsLinks } from "../../routes/routsLinks";
 import { useTextStore } from "../states/textStore";
+import Word from "./Components/Word";
 
 
 const AddedText = ()=>{
@@ -22,8 +23,18 @@ const AddedText = ()=>{
         <button onClick={handleAlltexts}>All texts</button>
     </div>
     <div>
-        {curText}
-        place for the text;
+        {curText.split(/\r?\n/).map((a,i)=>{
+            return (
+                <div key={`paragraph-${i}`} className={"text-left my-3 leading-8"}>
+                {a.split(" ").map((word,word_index)=>{
+                    return (<>
+                        <Word word={word} key={`word-${word_index}`} />{" "}
+                    </>)
+                })}
+                </div>
+            )
+        })}
+      
     </div>
     </>)
 }

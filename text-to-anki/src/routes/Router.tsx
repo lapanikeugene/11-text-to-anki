@@ -17,6 +17,7 @@ const SiteRoute = ()=>{
             <Route path={routsLinks.NEW_TEXT} element={<AddNewText />} />
             <Route path={routsLinks.MAIN_PAGE} element={<MainPage />} />
             <Route path={routsLinks.ADDED_TEXT} element={<AddedText />} />
+            <Route path={routsLinks.LEARN_TEXT} element={<AddedText />} />
             <Route path={routsLinks.ALL_TEXT} element={<AllTexts />} />
         </Routes>
         </Suspense>
