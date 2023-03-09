@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useDBConnection } from "../../hooks/dbConnection";
 import { routsLinks } from "../../routes/routsLinks";
+import { useTextStore } from "../states/textStore";
 
 
 const AddedText = ()=>{
 
     const navigate = useNavigate();
+    const curText = useTextStore(s=>s.currentText);
     const handleAlltexts = ()=>{
         navigate(routsLinks.ALL_TEXT);
     }
@@ -20,6 +22,7 @@ const AddedText = ()=>{
         <button onClick={handleAlltexts}>All texts</button>
     </div>
     <div>
+        {curText}
         place for the text;
     </div>
     </>)
