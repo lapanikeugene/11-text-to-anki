@@ -18,7 +18,7 @@ describe("DB tests",()=>{
 
     test("update db", async()=>{
         const id = await IndexDB.addToDB("test3","text of test3");
-        const title="udpated titel of test 3";
+        const title="udpated title of test 3";
         const content="updated content of test 3";
         await IndexDB.updateText(id,title,content);
         expect(await IndexDB.getText(id)).toMatchObject({id, title,content})
