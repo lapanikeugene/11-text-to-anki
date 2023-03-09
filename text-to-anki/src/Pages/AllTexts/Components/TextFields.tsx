@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { textDB, textInDb } from "../../../db/connectDB";
+import { IndexDB } from "../../../db/indexdb/indexdb";
 import { AlltextStore } from "../Store/AllTextsStore";
 import EditFields from "./EditFields";
 
@@ -34,7 +35,7 @@ const TextFields = ()=>{
 
     const handleDelete =(id:number=-1)=> async(e:React.MouseEvent)=>{
         if(id!==-1){
-            await textDB.texts.delete(id);
+            await IndexDB.deleteText(id);
             updatePage();
         }
 

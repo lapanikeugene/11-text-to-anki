@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {  textDB,textInDb } from "../../db/connectDB";
+import { IndexDB } from "../../db/indexdb/indexdb";
 import EditFields from "./Components/EditFields";
 import SearchComponent from "./Components/SearchComponents";
 import TextFields from "./Components/TextFields";
@@ -22,7 +23,7 @@ const AllTexts = ()=>{
 
     useEffect(()=>{
         const r = async()=>{
-        const texts = await textDB.texts.toArray(); // get all entries. 
+        const texts = await IndexDB.getAllTexts(); // get all entries. 
         // setTexts(texts );  
         putTextsToStore(texts);
         putTextsToBackUp(texts);

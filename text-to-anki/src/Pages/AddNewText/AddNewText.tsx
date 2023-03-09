@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {  textDB } from "../../db/connectDB";
+import { IndexDB } from "../../db/indexdb/indexdb";
 import { useDBConnection } from "../../hooks/dbConnection";
 import { routsLinks } from "../../routes/routsLinks";
 import { useTextStore } from "../states/textStore";
@@ -20,7 +21,9 @@ const AddNewText = ()=>{
         console.log( inputRef.current?.value);
         useText( inputRef.current?.value || "");
 
-        const id = await textDB.texts.add({title:inputRef.current?.value || "",content:textareaRef.current?.value || ""})
+        //await textDB.texts.add({title: || "",content: || ""})
+        const id = IndexDB.addToDB(inputRef.current?.value,textareaRef.current?.value);
+        
         setStatus(id.toString());
       }catch(e){
         console.log(e);

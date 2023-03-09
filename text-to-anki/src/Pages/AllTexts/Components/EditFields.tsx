@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { textDB, textInDb } from "../../../db/connectDB";
+import { IndexDB } from "../../../db/indexdb/indexdb";
 import { AlltextStore } from "../Store/AllTextsStore";
 
 
@@ -12,9 +13,10 @@ const EditFields = (params:{data:textInDb,index:number})=>{
     const handleSave = (id:number=-1)=> async(e:React.MouseEvent) =>{
 
         if(id!==-1){ 
-            await textDB.texts.update(id,{title:inputTitleRef.current?.value,content:textareaRef.current?.value})
+            // await textDB.texts.update()
+            await IndexDB.updateText(id,inputTitleRef.current?.value,textareaRef.current?.value)
             setUpdatePage();
-            hideEdit();
+            hideEdit;
         }
     }
     return(<>
