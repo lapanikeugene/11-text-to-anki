@@ -64,10 +64,7 @@ const AddedText = ()=>{
             return (
                 <div key={`paragraph-${i}`} className={"text-left my-3 leading-8"}>
                   {i}. 
-                {a.split(" ")
-             
-                
-                
+                {a.split(" ")    
                 .map((word,word_index)=>{
                     return (<>{
                     
