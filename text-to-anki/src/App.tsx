@@ -9,7 +9,7 @@ function App() {
  
   return (
     <div className="App">
-      <h1><Link to={routsLinks.MAIN_PAGE}>Learn with Texts</Link></h1>
+      <h1><Link to={routsLinks.MAIN_PAGE}>Kotoba Project</Link></h1>
       <hr />
       <SiteRoute />
     </div>
