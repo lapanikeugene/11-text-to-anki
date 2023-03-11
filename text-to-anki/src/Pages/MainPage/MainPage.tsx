@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { Box, Button, Skeleton } from '@mui/material';
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { routsLinks } from '../../routes/routsLinks';
 
@@ -8,20 +9,22 @@ const MainPage = ()=>{
 
     const navigate = useNavigate();
 
-    const handleClick = () => {
-      navigate(routsLinks.NEW_TEXT);
+    const handleClick = (link:string)=>(e:React.MouseEvent) => {
+      navigate(link);
     }
+
   
     return (<>
     
       <div className="card">
-      
-        <button onClick={handleClick}>Add first text</button>
+      <Skeleton variant="rectangular" width={800} height={400}>
+          <div style={{ paddingTop: '57%' }} />
+        </Skeleton>
+        <Button onClick={handleClick(routsLinks.NEW_TEXT)}>Add Text</Button>
+        <Button onClick={handleClick(routsLinks.ALL_TEXT)}>All Texts</Button>
        
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
     
     </>)
 }
