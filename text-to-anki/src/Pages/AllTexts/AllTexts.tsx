@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import {  textDB,textInDb } from "../../db/connectDB";
 import { IndexDB } from "../../db/indexdb/indexdb";
+import useNavigateToLink from "../../hooks/navigateToLink";
+import { routsLinks } from "../../routes/routsLinks";
+import { FormStyles } from "../_assets/css/FormStyles";
 import EditFields from "./Components/EditFields";
 import SearchComponent from "./Components/SearchComponents";
 import TextFields from "./Components/TextFields";
@@ -14,7 +17,7 @@ const AllTexts = ()=>{
     
   
     const currentUpdate = AlltextStore(s=>s.pageUpdates);
-
+    const [navigator] = useNavigateToLink();
     const putTextsToStore = AlltextStore(s=>s.setTexts);
     const putTextsToBackUp = AlltextStore(s=>s.setTextsToBackUp);
 
@@ -45,9 +48,12 @@ const AllTexts = ()=>{
 
 
     return(<>
-    <h1>All texts</h1>
+    <h1 className="text-start">All texts</h1>
    <div>
     <SearchComponent />
+   </div>
+   <div>
+    <button className={`${FormStyles.buttonStyle} w-4/12`} onClick={navigator(routsLinks.NEW_TEXT)}>Add New Text</button>
    </div>
         <TextFields />
    

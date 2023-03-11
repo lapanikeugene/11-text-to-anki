@@ -30,9 +30,10 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  align-items: flex-start;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #d1cdb4;
 }
 
 h1 {

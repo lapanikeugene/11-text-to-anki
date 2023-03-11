@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { WordsModel } from "../../../db/WordsDB/WordsModel";
 import { AddedTextStore } from "../Store/AddedTextStore";
+import { PopupStore } from "../Store/PopupStore";
 import { defaultWordColor, levelsOfWordColors } from "./WordSettings";
 /**
  * component of every word of text 
@@ -20,18 +21,20 @@ const Word = (params:{word:string})=>{
     const [bg,setBg] = useState(defaultWordColor); // see settings
     const [cursor,setCursor] = useState('cursor-progress')
     const [locked,setLocked] = useState(true); // lock component till info not fetched. 
-
+    const {showPopup,setXY,updateWordData} = PopupStore(s=>s);
+ 
     //every level should have it's own color, the last level is empty, it shows that user knows the word
     const bgs = levelsOfWordColors; // see settings
-    const updateText = AddedTextStore(s=>s.updateText);
 
-    const word = params.word.replace(marksReg,"");
+  
 
 
     useEffect(()=>{
         const r = async()=>{
-            const wordFromDb =await WordsModel.getWord(word);  
-           if(wordFromDb ===undefined){
+            const word = params.word.replace(marksReg,"");
+            const wordFromDb =await WordsModel.getWord(word.trim());  
+            console.log("check word: |",word,"|; result: ", wordFromDb);
+           if(wordFromDb.level ===-1){
                 await WordsModel.addWord(word);
                 setWordLevel(0);
             }else{
@@ -41,7 +44,7 @@ const Word = (params:{word:string})=>{
             setLocked(false);
 
            
-        console.log(await WordsModel.getWord(word));
+        // console.log(await WordsModel.getWord(word));
         }
         r();
 
@@ -55,20 +58,36 @@ const Word = (params:{word:string})=>{
 
     const handleClick =async()=>{
         if(!locked){
-        console.log("click on word");
-        await WordsModel.updateLevel(word,2);
-        updateText();
+            showPopup();
+        // console.log("click on word");
+        // await WordsModel.updateLevel(word,2);
+        // updateText();
         }
         
     }
 
+    
 
     useEffect(()=>{
         setCursor(locked ? 'cursor-progress' : 'cursor-pointer')
     },[locked])
+
+
+
+    const handlMouseOver= async(event:React.MouseEvent )=>{
+        // console.log("mouse over",event.clientX,event.clientY);
+      
+      
+        const word = params.word.replace(marksReg,"").toLocaleLowerCase();
+        const wordInfo = await (await WordsModel.getWord(word));
+        // console.log(wordInfo);
+        updateWordData(word,wordInfo.translate,wordInfo.level)
+        setXY(event.clientX,event.clientY+window.scrollY);
+    }
+
     return(<>
     
-    <span className={` ${bg} rounded-md py-1 px-2 ${cursor}  hover:font-bold`} onClick={handleClick}>
+    <span className={` ${bg} rounded-md py-1 px-2 ${cursor}  hover:font-bold`} onClick={handleClick} onMouseOver={handlMouseOver}>
         {params.word.replace(marksReg,"")}
     </span>{punctuationalMarks} 
     </>)

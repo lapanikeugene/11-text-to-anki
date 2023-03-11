@@ -1,6 +1,7 @@
 import React from "react";
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import EditText from "../Pages/EditText.tsx/EditText";
 import { routsLinks } from "./routsLinks";
 
 const AddNewText    = React.lazy(()=>import("../Pages/AddNewText/AddNewText"));
@@ -19,6 +20,7 @@ const SiteRoute = ()=>{
             <Route path={routsLinks.ADDED_TEXT} element={<AddedText />} />
             <Route path={routsLinks.LEARN_TEXT} element={<AddedText />} />
             <Route path={routsLinks.ALL_TEXT} element={<AllTexts />} />
+            <Route path={routsLinks.EDIT_TEXT} element={<EditText />} />
         </Routes>
         </Suspense>
     )

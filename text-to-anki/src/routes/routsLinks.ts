@@ -4,4 +4,5 @@ export enum routsLinks  {
     ADDED_TEXT="/added_text",
     LEARN_TEXT="/learn_text",
     ALL_TEXT="/all_texts",
+    EDIT_TEXT="/edit_text",
 }

@@ -4,6 +4,7 @@ export interface textInDb{
     id?:number,
     title:string,
     content:string,
+    lang:string,
 }
 
 export class TextDexie extends Dexie
@@ -12,7 +13,7 @@ export class TextDexie extends Dexie
 
     constructor(){
         super("myTexts");
-        this.version(1).stores({texts:'++id,title,content'});
+        this.version(1).stores({texts:'++id,title,content,lang'});
         this.texts = this.table('texts');
 
     }
