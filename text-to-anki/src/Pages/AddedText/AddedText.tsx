@@ -151,17 +151,17 @@ const AddedText = ()=>{
     return(<>
     <h1 className={`m-5 ${TextStyles.fontStyle} uppercase`}> {title}</h1>
 
-    <div className="gap-2">
-        <button onClick={handleHide}  className={FormStyles.buttonStyle}>
-            {hideLevels ?<><VisibilityIcon /></>
+    <div>
+        <button onClick={handleHide}  className={`${FormStyles.buttonStyle} m-1`}>
+            {hideLevels ?<><VisibilityIcon fontSize="small" /></>
             :
-            <><VisibilityOffIcon/></>            
+            <><VisibilityOffIcon fontSize="small"/></>            
         }
         </button>
-        <button onClick={handleKnow} className={FormStyles.buttonStyle}>I know all</button>
-        <button onClick={navigator(routsLinks.EDIT_TEXT)} className={FormStyles.buttonStyle}>Edit Text</button>
-        <button onClick={navigator(routsLinks.NEW_TEXT)} className={FormStyles.buttonStyle}>Add new text</button>
-        <button onClick={navigator(routsLinks.ALL_TEXT)} className={FormStyles.buttonStyle}>All texts</button>
+        <button onClick={handleKnow}  className={`${FormStyles.buttonStyle} m-1`}>I know all</button>
+        {/* <button onClick={navigator(routsLinks.EDIT_TEXT)} className={FormStyles.buttonStyle}>Edit Text</button> */}
+        <button onClick={navigator(routsLinks.NEW_TEXT)}   className={`${FormStyles.buttonStyle} m-1`}>Add new text</button>
+        <button onClick={navigator(routsLinks.ALL_TEXT)}   className={`${FormStyles.buttonStyle} m-1`}>All texts</button>
     </div>
     <div onMouseOut={handleMouseLeave} 
         className={`bg-white border

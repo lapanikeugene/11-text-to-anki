@@ -86,7 +86,8 @@ const Word = (params:Props)=>{
         const wordInfo = await (await WordsModel.getWord(word));
         // console.log(wordInfo);
         updateWordData(word,wordInfo.translate,wordInfo.level)
-        setXY(event.clientX,event.clientY+window.scrollY);
+        const upX= window.innerWidth <500 ? 200 : event.clientX   
+        setXY(upX,event.clientY+window.scrollY);
     }
 
     return(<>
