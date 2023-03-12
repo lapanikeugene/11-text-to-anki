@@ -93,6 +93,16 @@ const AddedText = ()=>{
         hidePopUp();
     }
     const handleKnow = async()=>{
+        let jpWords:string[]= [];
+        if(currentLang=='jpn'){
+        const rawJpArr = mecabText
+        .filter((a,i)=>(p==0? i>=0 &&i<=(paragraphsPerPage-1)  
+             :   i>=((p-1)*paragraphsPerPage)&&
+             i<=((p)*paragraphsPerPage)-1)) ||[];
+
+        jpWords = ([] as string[]).concat(...rawJpArr)
+        }
+
         const words = textForRender.split(/\r?\n/)
         .filter((a,i)=>(p==0? i>=0 &&i<=(paragraphsPerPage-1)  
                         :   i>=((p-1)*paragraphsPerPage)&&
@@ -105,7 +115,7 @@ const AddedText = ()=>{
                         .split(" ");
         // .map((a,i)=>{a.split(" ")})
         console.log(words);
-        await WordsModel.setMassLevel(words,3);
+        await WordsModel.setMassLevel(currentLang==="jpn" ? jpWords : words,3);
         updateText();
 
     }
@@ -114,6 +124,16 @@ const AddedText = ()=>{
     }
 
     const handleAnki=async()=>{
+        let jpWords:string[]= [];
+        if(currentLang=='jpn'){
+            const rawJpArr = mecabText
+            .filter((a,i)=>(p==0? i>=0 &&i<=(paragraphsPerPage-1)  
+                 :   i>=((p-1)*paragraphsPerPage)&&
+                 i<=((p)*paragraphsPerPage)-1)) ||[];
+    
+            jpWords = ([] as string[]).concat(...rawJpArr)
+            }
+
         const words = textForRender.split(/\r?\n/)
         .filter((a,i)=>(p==0? i>=0 &&i<=(paragraphsPerPage-1)  
                         :   i>=((p-1)*paragraphsPerPage)&&
@@ -125,7 +145,7 @@ const AddedText = ()=>{
                         .toLocaleLowerCase()
                         .split(" ");
 
-        const rawData = await WordsModel.getWordsWithTranslations(words);
+        const rawData = await WordsModel.getWordsWithTranslations(currentLang==="jpn" ? jpWords : words);
         console.log(rawData);
 
         const csvData =  []
