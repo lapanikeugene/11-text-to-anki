@@ -29,7 +29,7 @@ const AddNewText = ()=>{
           const lang = franc(text)
           console.log(lang)
           //add new text to db
-          const id = IndexDB.addToDB(title,text.replace(/[^\S\n]+/g, ' '),lang);
+          const id = IndexDB.addToDB(title,text.replace(/[^\S\n]+/g, ' ').replace(/\n\s*\n/g, '\n').trim(),lang);
           //add text for edit page to state.
           
           useText(text);

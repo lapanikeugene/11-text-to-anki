@@ -17,6 +17,10 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+.dark #root{
+  background-color: rgb(17,24,39);
+}
+
 
 a {
   font-weight: 500;
@@ -34,6 +38,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #d1cdb4;
+}
+.dark body{
+  background-color: #181817;
 }
 
 h1 {
@@ -64,6 +71,7 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
+    
   }
   a:hover {
     color: #747bff;
@@ -71,4 +79,5 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+  
 }
