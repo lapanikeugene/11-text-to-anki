@@ -33,10 +33,11 @@ const AddedText = ()=>{
     const getTextVersion = AddedTextStore(s=>s.counter);
     const hidePopUp = PopupStore(s=>s.hidePopup);
     const updateText = AddedTextStore(s=>s.updateText);
-    const mecab = new MeCab();
     const [mecabText,setMecCab] = useState<string[][]>([]);
 
     const [hideLevels,setHideLevels] = useState(false);
+    const [forStats, setForStats] = useState<string[]>([]);
+    const [statsUpdater,setStatsUpdater] = useState(0);
     const marksReg = /[^\w\s']/g;
     //need to update child component 
     useEffect(()=>{
@@ -44,7 +45,7 @@ const AddedText = ()=>{
         const textToRender = currentText.replace(/\n\s*\n/g, '\n');
         setTextForRender(textToRender);
         setTitle(currentTitle)
-
+        const r = async()=>{
         if(currentLang==='jpn'){
             const segments =  new Intl.Segmenter('jp', { granularity: 'word' });
 
@@ -52,8 +53,10 @@ const AddedText = ()=>{
             const textToMerge=[];
             for(const x in rawText){
                 console.log(rawText[x]);
-                const iterator1 = segments.segment(rawText[x]);
+                const iterator1 =await segments.segment(rawText[x]);
                 const arrOfElements = Array.from(iterator1).map(obj=>Object.values(obj.segment).join(""));
+                setForStats(arrOfElements);
+                setStatsUpdater(s=>++s); 
                 console.log(arrOfElements);
                 textToMerge.push(arrOfElements);
 
@@ -64,7 +67,7 @@ const AddedText = ()=>{
             
              }
 
-        const r = async()=>{
+       
 
             
         }
@@ -185,6 +188,12 @@ const AddedText = ()=>{
                    .map((rows,iRows)=>{
                     return(<div  key={`paragraph-${iRows}`} className={"text-left my-3 leading-8"}>
 
+
+                {hideLevels?<>
+                    {rows.map((a)=>{return a})}
+                </>
+                :<>
+                
                         {rows.map((cols,iCols)=>{
 
                             return(<>
@@ -195,7 +204,7 @@ const AddedText = ()=>{
                                 }
                             </>)
                         })}
-
+                    </>}
                     </div>)
 
                    }) 
@@ -231,7 +240,7 @@ const AddedText = ()=>{
         .map((a,i)=>{
             return (
                 <div key={`paragraph-${i}`} className={`text-left my-3 leading-8 ${TextStyles.fontStyle}`}>
-                    {i}.
+                    
                 <>
                 {hideLevels?<>
                     {a}
@@ -267,7 +276,7 @@ const AddedText = ()=>{
         </div>
         <div className="flex justify-between mb-10 mt-5">
             <div className={`text-start font-bold ${TextStyles.fontStyle}`}>
-                <TextStats />
+                <TextStats jpLangTexts={forStats} key={`stats-${statsUpdater}`} />
             </div>
             <div className="text-end">
                 <button className={FormStyles.buttonStyle} onClick={handleAnki}>Download deck for ANKI</button>
