@@ -11,6 +11,7 @@ export interface popUpInterface{
     hidePopup:()=>void,
     setXY:(x:number,y:number)=>void,
     updateWordData:(word:string,translation:string,level:number)=>void,
+    resetTranslation:()=>void,
 
 }
 
@@ -34,6 +35,11 @@ export const PopupStore = create<popUpInterface>((set,get)=>({
     updateWordData:(word,translation,level)=>{
         set((state)=>({
             word,translation,level
+        }))
+    },
+    resetTranslation:()=>{
+        set((state)=>({
+            translation:"",
         }))
     }
 })

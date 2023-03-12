@@ -39,6 +39,10 @@ export class wordsModel {
         return await wordDB.words.where('word').anyOf(words).and(item=>item.level===level).count();
     } 
 
+    async DeleteTranslation(word:string){
+        return await wordDB.words.where('word').equals(word).modify((l:wordsInDb)=>l.translate="");
+    }
+
     async getWordsWithTranslations(words:string[]){
 
         return await wordDB.words.where('word').anyOf(words).and(item=>item.translate.length>0).toArray();

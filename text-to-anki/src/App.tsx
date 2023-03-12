@@ -40,8 +40,12 @@ function App() {
       <div className='w-full relative'>
       <div className='absolute top-0 right-5'><DarkLightMode /></div>
       </div>
+    
       <h1 className='text-4xl text-left lg:text-center lg:text-6xl mb-5'><Link to={routsLinks.MAIN_PAGE}>Kotoba Project</Link></h1>
-     
+      <div className='flex justify-around'>
+      <a href='https://kanji-helper.com/'  >Learn Japanese</a>
+      <a href='mailto:info@kanji-helper.com' >Have Idea?</a>
+     </div>
       {/* <hr className='dark:border-gray-900' /> */}
       <div className='w-full h-[2px] m-2 dark:bg-gray-600 bg-slate-300 ' />
       <ThemeProvider theme={theme}>

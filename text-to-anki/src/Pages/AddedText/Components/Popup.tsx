@@ -11,8 +11,9 @@ import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import CloseIcon from '@mui/icons-material/Close';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 const Popup = ()=>{
-    const {x,y,visible,word,translation,level,showPopup,hidePopup} = PopupStore(s=>s);
+    const {x,y,visible,word,translation,level,showPopup,hidePopup,updateWordData} = PopupStore(s=>s);
     const [show,setShow]= useState(false);
     const [position,setPosition]= useState({top:-1000, left:-1000})
     const [text,setText] = useState({word:"",translation:"",level:0})
@@ -57,6 +58,10 @@ const Popup = ()=>{
         hidePopup();
     }
 
+    const handleDelete=async()=>{
+        await WordsModel.DeleteTranslation(text.word);
+        setText({word,translation:"",level});
+    }
     return(<>
     {show&&
         <div className={`   min-h-[250px]
@@ -71,7 +76,7 @@ const Popup = ()=>{
                             flex-col
                             items-stretch
                             content-around
-                            w-[300px]
+                            w-[320px]
                             bg-white rounded`} 
             style={{top:position.top,left:position.left}} 
             onMouseOver={handleOver}>
@@ -79,7 +84,8 @@ const Popup = ()=>{
         <div className="absolute right-3 top-1 text-lg cursor-pointer" onClick={handleClose}>X</div>        
         <div className="text-xl font-bold uppercase">{text.word}</div>
        
-        <div>{translation.length>0 ?<div className="mt-2">Translation: <strong className="uppercase">{translation}</strong> </div>
+        <div>{text.translation.length>0 ?<div className="mt-2">Translation:<br/> 
+        <strong className="uppercase mr-2">{text.translation}</strong> <DeleteForeverIcon className="cursor-pointer" onClick={handleDelete} /> </div>
                 : <>
                 <div><strong>Translation not found</strong></div>
                 <div><a href={`https://translate.google.com/?op=translate&text=${text.word}`} target="_blank">Google Translate</a></div>
@@ -87,7 +93,7 @@ const Popup = ()=>{
                     <input placeholder="Please input translation" 
                             className={"bg-slate-100 w-full hover:bg-white p-1 ml-1 border-1 hover:border-purple-700"}
                             ref={inputRef}></input><br/>
-                <div onClick={handleAdd} className="text-green-600 cursor-pointer" ><AddCircleIcon /></div>
+                <div onClick={handleAdd} className="text-green-600 cursor-pointer text-lg" ><AddCircleIcon fontSize="large" /></div>
                 </div>
                 </>
         }</div>
