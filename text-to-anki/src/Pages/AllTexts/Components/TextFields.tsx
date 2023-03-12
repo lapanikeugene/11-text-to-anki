@@ -20,7 +20,7 @@ const TextFields = ()=>{
     const resetPage = AddedTextStore(s=>s.setPage);
     const textsFromStore = AlltextStore(s=>s.textsDB);
 
-    const {updateText,updateTitle} = useTextStore(s=>s);
+    const {updateText,updateTitle,updateLang} = useTextStore(s=>s);
     const {setEditedText} = EditTextStore(s=>s);
 
 
@@ -43,18 +43,19 @@ const TextFields = ()=>{
       navigate(routsLinks.EDIT_TEXT);
     }
 
-    const handleTitle=(content:string,title:string)=>(e:React.MouseEvent)=>{
+    const handleTitle=(content:string,title:string,lang:string)=>(e:React.MouseEvent)=>{
         resetPage(0);
         
         updateText(content);
         updateTitle(title);
+        updateLang(lang)
         navigate(routsLinks.LEARN_TEXT);
     }
 
-    const tdStyle = "px-6 py-4 ";
+    const tdStyle = "px-1 py-1 lg:px-6 lg:py-4";
     return(<div className="text-start">
         <table className=" w-full table-auto border mt-5   ">
-            <thead className="bg-slate-400 font-medium text-slate-700 dark:border-neutral-500 dark:bg-neutral-900">
+            <thead className="bg-slate-400 font-medium text-slate-700 dark:border-neutral-500 dark:bg-neutral-600 dark:text-slate-300">
                 <tr>
                     <th className="w-10">
                         No.
@@ -70,9 +71,9 @@ const TextFields = ()=>{
         <tbody>
      {textsToRender.map((a,i)=>{
         return (
-            <tr  key={`text-${i}`} className={` border-b-2 border-b-slate-300 ${i%2==0?"bg-slate-200":"bg-white"}`}>
-                <td className="flex justify-center items-center text-2xl py-4">{i+1}.</td>
-                <td className={`${tdStyle} text-xl cursor-pointer hover:bg-slate-600 hover:text-white`}  onClick={handleTitle(a.content,a.title)}><strong placeholder="Learn Text...">{a.title}</strong></td>
+            <tr  key={`text-${i}`} className={` border-b-2 border-b-slate-300 ${i%2==0?"bg-slate-200":"bg-white dark:bg-slate-300"}`}>
+                <td className="flex justify-center items-center text-base  lg:text-2xl py-4">{i+1}.</td>
+                <td className={`${tdStyle} text-sm lg:text-xl cursor-pointer hover:bg-slate-600 hover:text-white`}  onClick={handleTitle(a.content,a.title,a.lang)}><strong placeholder="Learn Text...">{a.title}</strong></td>
                 <td className="mx-3">{a.lang}</td>
                 <td><button onClick={handleEdit(a.title,a.content,a.id || -1)} className={FormStyles.buttonStyle} ><EditIcon /></button></td>
                 <td  className={tdStyle}><button onClick={handleDelete(a.id)} className={FormStyles.buttonStyle}><DeleteForeverIcon /></button></td>

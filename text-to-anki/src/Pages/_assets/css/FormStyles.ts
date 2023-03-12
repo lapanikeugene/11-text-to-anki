@@ -17,7 +17,9 @@ class formStyles {
       px-4
       focus:outline-none
       focus:bg-white
-      focus:border-purple-600 `;
+      focus:border-purple-600 
+      dark:bg-gray-600
+      `;
       
     this.buttonStyle =`
     bg-blue-600
@@ -28,7 +30,10 @@ class formStyles {
     px-4
     border-b-4
     border-blue-800
-    hover:bg-blue-400`
+    hover:bg-blue-400
+    dark:bg-gray-600
+    dark:border-gray-800
+    dark:text-slate-300`
     }
 
 

@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { textInDb } from "../../../db/connectDB";
 import { FormStyles } from "../../_assets/css/FormStyles";
+import { TextStyles } from "../../_assets/css/TextStyles";
 import { AlltextStore } from "../Store/AllTextsStore";
 
 
@@ -21,7 +22,7 @@ const SearchComponent = ()=>{
 
 }
     return (<div className="flex justify-start items-center h-20 mt-4">
-        <div className="p-3 h-full flex items-center text-3xl">Search</div>
+        <div className={`p-3 h-full flex items-center text-lg lg:text-3xl ${TextStyles.fontStyle}`}>Search</div>
         <div className="w-full ">
             <input  placeholder="Enter title..." 
                     ref={inputSearchRef} 

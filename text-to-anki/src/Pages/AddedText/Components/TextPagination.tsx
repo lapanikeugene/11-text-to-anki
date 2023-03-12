@@ -1,17 +1,18 @@
-import { Pagination } from "@mui/material"
+import { Pagination, Theme } from "@mui/material"
 import { useEffect, useState } from "react";
 import { useTextStore } from "../../states/textStore";
+import { TextStyles } from "../../_assets/css/TextStyles";
 import { AddedTextStore } from "../Store/AddedTextStore";
 import { paragraphsPerPage } from "./WordSettings";
-
 
 const TextPagination = ()=>{
     const {page,setPage} = AddedTextStore(s=>s);
     const curText = useTextStore(s=>s.currentText)
     const [p,setP] = useState(1);
     const [t,setT] = useState(0);
+    
 
-    const handlePage=(e:React.ChangeEvent<unknown>,p:number)=>{
+    const handlePage=(_e:React.ChangeEvent<unknown>,p:number)=>{
         setPage(p);
     }
 
@@ -23,7 +24,8 @@ const TextPagination = ()=>{
             <Pagination count={Math.ceil(t/paragraphsPerPage)} 
                         variant="outlined" 
                         onChange={handlePage} 
-                        page={p} />
+                        page={p} 
+                        />
     </>)
 }
 

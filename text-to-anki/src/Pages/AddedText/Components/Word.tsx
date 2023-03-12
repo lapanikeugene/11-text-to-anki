@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { WordsModel } from "../../../db/WordsDB/WordsModel";
+import { TextStyles } from "../../_assets/css/TextStyles";
 import { AddedTextStore } from "../Store/AddedTextStore";
 import { PopupStore } from "../Store/PopupStore";
 import { defaultWordColor, levelsOfWordColors } from "./WordSettings";
@@ -8,7 +9,10 @@ import { defaultWordColor, levelsOfWordColors } from "./WordSettings";
  * 
  * 
  */
-const Word = (params:{word:string})=>{
+type Props= {word:string,mode?:string}
+
+const Word = (params:Props)=>{
+    
     //  [] are used to define a character set
     // \w word
     // \s whitespace
@@ -31,9 +35,9 @@ const Word = (params:{word:string})=>{
 
     useEffect(()=>{
         const r = async()=>{
-            const word = params.word.replace(marksReg,"");
+            const word =params.mode==='js' ? params.word : params.word.replace(marksReg,"");
             const wordFromDb =await WordsModel.getWord(word.trim());  
-            console.log("check word: |",word,"|; result: ", wordFromDb);
+            // console.log("check word: |",word,"|; result: ", wordFromDb);
            if(wordFromDb.level ===-1){
                 await WordsModel.addWord(word);
                 setWordLevel(0);
@@ -78,7 +82,7 @@ const Word = (params:{word:string})=>{
         // console.log("mouse over",event.clientX,event.clientY);
       
       
-        const word = params.word.replace(marksReg,"").toLocaleLowerCase();
+        const word =params.mode==='js' ? params.word : params.word.replace(marksReg,"").toLocaleLowerCase();
         const wordInfo = await (await WordsModel.getWord(word));
         // console.log(wordInfo);
         updateWordData(word,wordInfo.translate,wordInfo.level)
@@ -87,9 +91,9 @@ const Word = (params:{word:string})=>{
 
     return(<>
     
-    <span className={` ${bg} rounded-md py-1 px-2 ${cursor}  hover:font-bold`} onClick={handleClick} onMouseOver={handlMouseOver}>
-        {params.word.replace(marksReg,"")}
-    </span>{punctuationalMarks} 
+    <span className={` ${bg} rounded-md py-1 px-2 ${cursor}  hover:font-bold  ${TextStyles.fontStyle} `} onClick={handleClick} onMouseOver={handlMouseOver}>
+        { params.mode==='js' ? params.word : params.word.replace(marksReg,"")}
+    </span>{params.mode==='js' ? " ": punctuationalMarks} 
     </>)
 }
 
