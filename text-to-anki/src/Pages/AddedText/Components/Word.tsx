@@ -91,8 +91,8 @@ const Word = (params:Props)=>{
     }
 
     return(<>
-    {params.word?.match(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g) ? params.word.trim()+" " :
-    <span className={` ${bg} rounded-md py-1 px-2 ${cursor}  hover:font-bold  ${TextStyles.fontStyle} ${params.fontSize} `} onClick={handleClick} onMouseOver={handlMouseOver}>
+    {params.word?.match(/[【 】.,\/#!$%\^&\*;:{}=\-_`~()]/g) ? params.word.trim()+" " :
+    <span className={` ${bg}  inline-block rounded-md py-1 px-2 ${cursor}  hover:font-bold  ${TextStyles.fontStyle} ${params.fontSize} `} onClick={handleClick} onMouseOver={handlMouseOver}>
         
         { params.word}
     </span> } 

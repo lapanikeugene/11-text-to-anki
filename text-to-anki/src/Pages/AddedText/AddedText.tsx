@@ -129,6 +129,7 @@ const AddedText = ()=>{
             dark:border-gray-800
             `}>
 
+                {currentLang}
             {currentLang==='jpn'? 
                         <TextViewWrapper lang={currentLang}  />
                     :

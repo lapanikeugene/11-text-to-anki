@@ -5,9 +5,7 @@ import { JpnTextSplitter } from "../../../assets/JpnTextSplitter";
 import { AddedTextStore } from "../../../Store/AddedTextStore";
 
 
-export const jp = async()=>{
-    const currentText = useTextStore(s=>s.currentText);
-    const page =  AddedTextStore(s=>s.page)
+export const jp = async(currentText:string,page:number)=>{
     const paragraphsPerPage = LS.getParagraph();
     let jpWords:string[]= [];
     

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LocalStorageVars } from "../../../_assets/db/LocalStorageVars";
 import { SettingsStore } from "../../Store/SettingsStore";
 import Word from "../Word";
+import { RawDarkText } from "../WordSettings";
 import { useSettingsVersion } from "./hooks/settingsVersion";
 import { useCheckHideLevels } from "./hooks/useCheckHideLevels";
 import { useCheckTextVersion } from "./hooks/useCheckTextVersion";
@@ -31,7 +32,7 @@ const TextViewJapan =()=>{
 
 
         {isHiddenLevels?<>
-            <p className={fontSize} >
+            <p className={`${fontSize} ${RawDarkText}`} >
                 {rows.map((a)=>{return a})}
             </p>
         </>

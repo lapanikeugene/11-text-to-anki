@@ -23,7 +23,7 @@ export const SettingsStore= create<SettingsStoreInterface>((set,get)=>({
     updateSettingsVersion:()=>{set((state)=>({settingsVersion:state.settingsVersion+1}))},
     
     toggleSidebar:()=>{set((state)=>({isSidebar:!state.isSidebar}))},
-    toggleHideLevel:()=>{set((state)=>({isHideLevels:!state.isSidebar}))},
+    toggleHideLevel:()=>{set((state)=>({isHideLevels:!state.isHideLevels}))},
     
     setFontSize:(size)=>{set(()=>({fontSize:size}))},
     setParagraphsPerPage:(n)=>{set(()=>({paragraphsPerPage:n}))},

@@ -29,7 +29,7 @@ const AnkiButWrapper = ()=>{
         
                 
                 // Convert the data to a CSV format string
-        const csvString = csvData.map(row => row.join(",")).join("\n");
+        const csvString = csvData.map(row => row.join(";")).join("\n");
 
         // Create a Blob object with the CSV data
         const blob = new Blob([csvString], { type: "text/csv" });

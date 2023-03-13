@@ -9,12 +9,13 @@ import { fontSizesSettings, paragraphsPerPageDefault, paragraphsPerPageSettings 
 
 const SideBar =()=>{
     const [sidebarStyle, setSidebarStyle] = useState({});
-    const {isSidebar,setFontSize} = SettingsStore(s=>s);
+    const {isSidebar,setFontSize,updateSettingsVersion} = SettingsStore(s=>s);
     const [isOpen,setIsOpen] = useState(false);
     const [parPerPage,setParPerPage] = useState(paragraphsPerPageDefault);
 
     const setPage = AddedTextStore(s=>s.setPage);
-    const [handleToggleSideBar] =useToggleSideBar()
+    const [handleToggleSideBar] =useToggleSideBar();
+     
     
     useEffect(()=>{
         setIsOpen(isSidebar);
@@ -36,12 +37,10 @@ const SideBar =()=>{
                             position: "sticky", top: "0", });
       };
 
-      const [settingsUpdater,setSettingsUpdater] = useState(0);
       const handleSettingsParagraphs =(e:React.ChangeEvent<HTMLSelectElement>)=>{
         localStorage.setItem('settings-paragraphs-per-page',e.target.value);
         setParPerPage(Number(e.target.value));
-
-        setSettingsUpdater(s=>++s);
+        updateSettingsVersion();
 
       }
 
@@ -49,7 +48,7 @@ const SideBar =()=>{
         localStorage.setItem('settings-font-size',e.target.value);
         setFontSize(e.target.value);
         setPage(0);
-        setSettingsUpdater(s=>++s);
+        updateSettingsVersion();
       }
 
     return( <CSSTransition

@@ -23,20 +23,24 @@ const MenuTop = ()=>{
     const [handleToggleSideBar] =useToggleSideBar();
     const toggleHideLevel = SettingsStore(s=>s.toggleHideLevel);
     const [isHiddenLevels] = useCheckHideLevels();
+    const [hiddenLevels,setHiddenLevels] = useState(isHiddenLevels);
     const {currentLang} = useTextStore(s=>s);
     const updateText = AddedTextStore(s=>s.updateText);
-   
+    const currentText = useTextStore(s=>s.currentText);
+    const page =  AddedTextStore(s=>s.page);
+
     const handleHide=()=>{
         toggleHideLevel();
+        setHiddenLevels(s=>!s);
     }
 
     const handleKnow = async()=>{
        
 
-        const words = IKnowAllButtonWrapper(currentLang==="jpn" ? 'jpn':'spaced');
+        const words = await IKnowAllButtonWrapper(currentLang==="jpn" ? 'jpn':'spaced',currentText,page);
         // .map((a,i)=>{a.split(" ")})
         console.log(words);
-        await WordsModel.setMassLevel( words);
+        await WordsModel.setMassLevel( words,3);
         updateText();
 
     }
@@ -46,7 +50,7 @@ const MenuTop = ()=>{
         <button onClick={handleToggleSideBar} className={`${FormStyles.buttonStyle} m-1`} title="settings"><SettingsIcon /></button>
 
         <button onClick={handleHide}  className={`${FormStyles.buttonStyle} m-1`} title="Hide/show levels">
-            {isHiddenLevels ?<><VisibilityIcon fontSize="small" /></>
+            {hiddenLevels ?<><VisibilityIcon fontSize="small" /></>
             :
             <><VisibilityOffIcon fontSize="small"/></>            
         }

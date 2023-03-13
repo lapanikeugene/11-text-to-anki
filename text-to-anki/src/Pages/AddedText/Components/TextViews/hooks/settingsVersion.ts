@@ -7,6 +7,7 @@ export const useSettingsVersion =()=>{
     const [settingsVer,setSettings] = useState(0);
 
     useEffect(()=>{
+        console.log("settings updated!", settingsVer)
         setSettings(settingsVer)
     },[settingsVersion]);
 

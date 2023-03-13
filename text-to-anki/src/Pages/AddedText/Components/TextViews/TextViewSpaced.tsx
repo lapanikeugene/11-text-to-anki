@@ -3,6 +3,7 @@ import { Regs } from "../../../_assets/helpers/Regs";
 import { PageFilter } from "../../assets/PageFilter";
 import { SettingsStore } from "../../Store/SettingsStore";
 import Word from "../Word";
+import { RawDarkText } from "../WordSettings";
 import { useSettingsVersion } from "./hooks/settingsVersion";
 import { useCheckHideLevels } from "./hooks/useCheckHideLevels";
 import { useCheckTextVersion } from "./hooks/useCheckTextVersion";
@@ -26,7 +27,7 @@ const TextViewSpaced =()=>{
                     
                 <>
                 {isHiddenLevels?<>
-                    <p className={fontSize} >{a}</p>
+                    <p className={`${fontSize}  ${RawDarkText}`} >{a}</p>
                 </>
                 
                 
