@@ -2,7 +2,7 @@
   "name": "text-to-anki",
   "homepage": ".",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.1.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
