@@ -7,8 +7,8 @@ export const useSettingsVersion =()=>{
     const [settingsVer,setSettings] = useState(0);
 
     useEffect(()=>{
-        console.log("settings updated!", settingsVer)
-        setSettings(settingsVer)
+        // console.log("settings updated!", settingsVersion)
+        setSettings(settingsVersion)
     },[settingsVersion]);
 
 

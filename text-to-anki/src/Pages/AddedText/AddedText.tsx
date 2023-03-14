@@ -34,8 +34,6 @@ const AddedText = ()=>{
     const getTextVersion = AddedTextStore(s=>s.counter);
     const hidePopUp = PopupStore(s=>s.hidePopup);
     const updateText = AddedTextStore(s=>s.updateText);
-    const [mecabText,setMecCab] = useState<string[][]>([]);
-
     const [forStats, setForStats] = useState<string[]>([]);
     const [statsUpdater,setStatsUpdater] = useState(0);
     const setPage = AddedTextStore(s=>s.setPage)
@@ -49,30 +47,7 @@ const AddedText = ()=>{
         setTextForRender(textToRender);
         setTitle(currentTitle)
         const r = async()=>{
-        if(currentLang==='jpn'){
-           
-
-            // const rawText=currentText.split(/\r?\n/)
-            // const textToMerge=[];
-            // // for(const x in rawText){
-            //     console.log(rawText[x]);
-            //     const iterator1 =await segments.segment(rawText[x]);
-            //     const arrOfElements = Array.from(iterator1).map(obj=>Object.values(obj.segment).join(""));
-            //     setForStats(arrOfElements);
-            //     setStatsUpdater(s=>++s); 
-            //     console.log(arrOfElements);
-            //     textToMerge.push(arrOfElements);
-
-            // }
-            // console.log(textToMerge)
-            // setMecCab(textToMerge);    
-
-            
-             }
-
-       
-
-            
+      
         }
     
 
@@ -141,7 +116,7 @@ const AddedText = ()=>{
             <Stack alignItems="center">
                 <TextPagination key={`pagination-settings-update-${settingsVer}`} />
             </Stack>
-        </div>
+        </div> 
         <div className="flex justify-between mb-10 mt-5">
             <div className={`text-start font-bold ${TextStyles.fontStyle}`}>
                 <TextStats jpLangTexts={forStats} key={`stats-${statsUpdater}`} />
