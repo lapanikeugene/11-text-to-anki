@@ -27,7 +27,6 @@ const TextPagination = ()=>{
     useEffect(()=>{setT(curText.trim().replaceAll(/\n\s*\n/g, '\n').split(/\r?\n/).length)},[curText])
 
     return(<>
-        page: {p} t:{t} parPerPage:{parPerPage}; settings:{settingsVer}
             <Pagination count={Math.ceil(t/parPerPage)} 
                         variant="outlined" 
                         onChange={handlePage} 

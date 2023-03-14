@@ -10,7 +10,7 @@ import './index.css'
 // const router = createBrowserRouter([{path:'/',element:<App />}])
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter >
+    <BrowserRouter  basename="/kotoba">
     <App/>
     </BrowserRouter>
   </React.StrictMode>,

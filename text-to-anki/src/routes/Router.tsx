@@ -14,7 +14,7 @@ const SiteRoute = ()=>{
 
     return (
         <Suspense fallback={"Loading..."}>
-        <Routes>
+        <Routes >
             <Route path={routsLinks.NEW_TEXT} element={<AddNewText />} />
             <Route path={routsLinks.MAIN_PAGE} element={<MainPage />} />
             <Route path={routsLinks.ADDED_TEXT} element={<AddedText />} />
