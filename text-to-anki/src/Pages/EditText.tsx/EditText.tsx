@@ -36,7 +36,7 @@ const EditText = ()=>{
     const handleSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
         await IndexDB.deleteText(id);
-        const lang = franc(content)
+        const lang =  franc(content)
         await IndexDB.addToDB(title,content.replace(/\s+/g, ' '),lang);
         navigate(routsLinks.ALL_TEXT)
     }
