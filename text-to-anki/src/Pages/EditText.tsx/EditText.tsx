@@ -1,3 +1,4 @@
+import { franc } from "franc";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IndexDB } from "../../db/indexdb/indexdb";
@@ -35,7 +36,8 @@ const EditText = ()=>{
     const handleSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
         await IndexDB.deleteText(id);
-        await IndexDB.addToDB(title,content.replace(/\s+/g, ' '));
+        const lang = franc(content)
+        await IndexDB.addToDB(title,content.replace(/\s+/g, ' '),lang);
         navigate(routsLinks.ALL_TEXT)
     }
 
