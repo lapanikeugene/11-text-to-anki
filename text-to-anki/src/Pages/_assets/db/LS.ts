@@ -1,5 +1,7 @@
 import { LocalStorageVars } from "./LocalStorageVars";
-
+/**
+ * work with local storage
+ */
 export class ls{
 
 

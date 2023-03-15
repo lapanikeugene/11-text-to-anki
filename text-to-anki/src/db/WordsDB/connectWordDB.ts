@@ -7,7 +7,9 @@ export interface wordsInDb{
     level:number,
     comment:string,
 }
-
+/**
+ * Second table related to words. 
+ */
 export class TextDexie extends Dexie
 {
     words:Dexie.Table<wordsInDb, number> ;

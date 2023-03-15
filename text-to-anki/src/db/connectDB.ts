@@ -6,7 +6,9 @@ export interface textInDb{
     content:string,
     lang:string,
 }
-
+/**
+ * Connect to indexed DB with help of Dexie
+ */
 export class TextDexie extends Dexie
 {
     texts:Dexie.Table<textInDb, number> ;

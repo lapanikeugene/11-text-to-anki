@@ -10,8 +10,10 @@ const SearchComponent = ()=>{
     const setTextsToStore = AlltextStore(s=>s.setTexts);
     const textDB = AlltextStore(s=>s.textsDB);
     const resetTextDB = AlltextStore(s=>s.resetTextsDB);
+    //this variable need to effectively return to the previous search results. 
     const backupBD = AlltextStore(s=>s.backUpTextsDB);
-    // написать, что сперва я использовал усе эффект который зависил от юсрефа, но окозалось, это не работает. 
+    
+    
     const handleSearch = async()=>{
     // console.log("check search...")
     let value = inputSearchRef.current?.value || "";

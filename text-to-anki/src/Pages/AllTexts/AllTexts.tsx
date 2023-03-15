@@ -12,18 +12,10 @@ import { AlltextStore } from "./Store/AllTextsStore";
 
 
 const AllTexts = ()=>{
-   
-
-
-    
-  
     const currentUpdate = AlltextStore(s=>s.pageUpdates);
     const [navigator] = useNavigateToLink();
     const putTextsToStore = AlltextStore(s=>s.setTexts);
     const putTextsToBackUp = AlltextStore(s=>s.setTextsToBackUp);
-
-   
-
 
     useEffect(()=>{
         const r = async()=>{
@@ -40,14 +32,6 @@ const AllTexts = ()=>{
     },[currentUpdate])
 
   
-    
-    
-
-
-   
-
-
-
     return(<>
     <h1 className={`lg:text-start ${TextStyles.fontStyle}`}>All texts</h1>
    <div>

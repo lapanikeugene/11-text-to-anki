@@ -1,3 +1,7 @@
+
+/**
+ * some reusable RegExp 
+ */
 class regs{
     SelectAllPunctuationMarks: RegExp;
     SelectNewStringSign: RegExp;

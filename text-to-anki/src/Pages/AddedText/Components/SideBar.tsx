@@ -7,6 +7,12 @@ import { SettingsStore } from "../Store/SettingsStore";
 import { useToggleSideBar } from "./TextViews/hooks/toggleSideBar";
 import { fontSizesSettings, paragraphsPerPageDefault, paragraphsPerPageSettings } from "./WordSettings";
 
+/**
+ * TODO: refactoring.
+ * TODO: Make it real sidebar. 
+ * TODO: check responsive design. 
+ * @returns sidebar with settings. 
+ */
 const SideBar =()=>{
     const [sidebarStyle, setSidebarStyle] = useState({});
     const {isSidebar,setFontSize,updateSettingsVersion} = SettingsStore(s=>s);

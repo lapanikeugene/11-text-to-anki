@@ -1,3 +1,6 @@
+/**
+ * first setup of local storage
+ */
 export const SettingsLocalStorageSetup = ()=>{
     let defParagraphs = localStorage.getItem('settings-paragraphs-per-page');
     let defFontSize  = localStorage.getItem('settings-font-size');

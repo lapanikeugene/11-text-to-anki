@@ -5,7 +5,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { LocalStorageVars } from "../Pages/_assets/db/LocalStorageVars";
 const DarkLightMode=()=>{
     const {setMode,mode} =DarkModeState(s=>s);
-    const [m,setM] = useState(mode)
+    const [m,setM] = useState(mode); // mode state to change the component.  
 
 
     useEffect(()=>{
@@ -13,7 +13,7 @@ const DarkLightMode=()=>{
         setM(localStorage.getItem(LocalStorageVars.COLOR_THEME)||'light');
     },[mode])
     const handleMode= (mode:string)=>(e:React.MouseEvent)=>{
-        console.log('set mode',mode);
+        // console.log('set mode',mode);
         localStorage.setItem('color-theme', mode)
         setMode(mode);
 

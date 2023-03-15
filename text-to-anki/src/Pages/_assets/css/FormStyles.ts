@@ -1,5 +1,7 @@
 
-
+/**
+ * styles for inputs and buttons
+ */
 class formStyles {
     inputStyle: string;
     buttonStyle: string;

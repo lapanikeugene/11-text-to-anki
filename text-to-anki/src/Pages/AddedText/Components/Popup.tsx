@@ -12,6 +12,10 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import CloseIcon from '@mui/icons-material/Close';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+/**
+ * TODO: refactoring. 
+ * @returns popup component with translations and rating of knowledge. 
+ */
 const Popup = ()=>{
     const {x,y,visible,word,translation,level,showPopup,hidePopup,updateWordData} = PopupStore(s=>s);
     const [show,setShow]= useState(false);
@@ -88,6 +92,7 @@ const Popup = ()=>{
         <strong className="uppercase mr-2">{text.translation}</strong> <DeleteForeverIcon className="cursor-pointer" onClick={handleDelete} /> </div>
                 : <>
                 <div><strong>Translation not found</strong></div>
+                {/* future update: add dictionaries related to language.  */}
                 <div><a href={`https://translate.google.com/?op=translate&text=${text.word}`} target="_blank">Google Translate</a></div>
                 <div className="flex justify-center items-center mt-3">
                     <input placeholder="Please input translation" 
@@ -99,7 +104,8 @@ const Popup = ()=>{
         }</div>
         <div className="my-3">Rate Your Progress</div>
         <div className="flex justify-around items-center">
-          
+          {/* in future update these buttons can be generated in dendence on settings.
+                it hsould be also necessary to separate all repeated classes to the separate file */}
         <div onClick={handleLevel(0)} className={`  bg-red-500
                                                     w-12
                                                     h-12

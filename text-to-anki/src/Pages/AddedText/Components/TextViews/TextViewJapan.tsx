@@ -9,6 +9,10 @@ import { useCheckTextVersion } from "./hooks/useCheckTextVersion";
 import { useCurrentPage } from "./hooks/useCurrentPage";
 import { usePrepareJpnText } from "./hooks/usePrepareJpnText";
 
+/**
+ * 
+ * @returns template of japanese text, that will be displayed in addedText component 
+ */
 const TextViewJapan =()=>{
     const [settingsVer] = useSettingsVersion();
     const fontSize = SettingsStore(s=>s.fontSize);

@@ -36,10 +36,10 @@ const MenuTop = ()=>{
 
     const handleKnow = async()=>{
        
-
+        //in future updates, there will be opportunity to add more languages. 
         const words = await IKnowAllButtonWrapper(currentLang==="jpn" ? 'jpn':'spaced',currentText,page);
-        // .map((a,i)=>{a.split(" ")})
-        console.log(words);
+        
+        //3 is maximal level in this app. 
         await WordsModel.setMassLevel( words,3);
         updateText();
 
@@ -56,7 +56,8 @@ const MenuTop = ()=>{
         }
         </button>
         <button onClick={handleKnow}  className={`${FormStyles.buttonStyle} m-1`}>I know all</button>
-        {/* <button onClick={navigator(routsLinks.EDIT_TEXT)} className={FormStyles.buttonStyle}>Edit Text</button> */}
+        {/* for future update: 
+        <button onClick={navigator(routsLinks.EDIT_TEXT)} className={FormStyles.buttonStyle}>Edit Text</button> */}
         <button onClick={navigator(routsLinks.NEW_TEXT)}   className={`${FormStyles.buttonStyle} m-1`}>Add new text</button>
         <button onClick={navigator(routsLinks.ALL_TEXT)}   className={`${FormStyles.buttonStyle} m-1`}>All texts</button>
     </div>)

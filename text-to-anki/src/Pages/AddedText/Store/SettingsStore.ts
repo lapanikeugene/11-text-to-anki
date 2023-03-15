@@ -1,9 +1,10 @@
 import { create } from "zustand";
 import { paragraphsPerPageDefault } from "../Components/WordSettings";
 
+//TODO separate Store
 interface SettingsStoreInterface{
     settingsVersion:number, // this var need to update child components of text. 
-    isSidebar:boolean,
+    isSidebar:boolean, //hide and show sidebar
     fontSize:string,
     isHideLevels:boolean,
     paragraphsPerPage:number,

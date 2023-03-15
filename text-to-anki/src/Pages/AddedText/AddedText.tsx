@@ -24,6 +24,9 @@ import { SettingsStore } from "./Store/SettingsStore";
  */
 const AddedText = ()=>{
 
+    /**
+     * TODO: clean variables
+     */
     const [navigator] = useNavigateToLink();
     const {currentText,currentTitle,currentLang} = useTextStore(s=>s);
     const [textForRender,setTextForRender] = useState<string>("");
@@ -75,6 +78,7 @@ const AddedText = ()=>{
      */
     useEffect(()=>{
         SettingsLocalStorageSetup();
+        //TODO Check LS class
         let defParagraphs = localStorage.getItem('settings-paragraphs-per-page');
 
         let defFontSize  = localStorage.getItem('settings-font-size');
@@ -90,7 +94,8 @@ const AddedText = ()=>{
             <MenuTop />
         </div>
 
-        {/* Settings */}
+        {/* Settings
+        TODO: Move sidebar outside component */}
         <div>
             <SideBar />
         </div>

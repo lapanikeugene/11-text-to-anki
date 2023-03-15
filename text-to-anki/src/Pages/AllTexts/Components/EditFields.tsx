@@ -16,7 +16,7 @@ const EditFields = (params:{data:textInDb,index:number})=>{
             // await textDB.texts.update()
             await IndexDB.updateText(id,inputTitleRef.current?.value,textareaRef.current?.value)
             setUpdatePage();
-            hideEdit;
+            hideEdit; //TODO: Check
         }
     }
     return(<>

@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useTextStore } from "../../../../states/textStore";
 import { JpnTextSplitter } from "../../../assets/JpnTextSplitter";
 
+/**
+ * 
+ * @returns array of text paragraphs in japanese to display in AddedText component
+ */
 export const usePrepareJpnText = ()=>{
     const [preparedJpnText,setText]= useState<string[][]>([]);
     const currentText = useTextStore(s=>s.currentText)

@@ -4,6 +4,7 @@ import { useTextStore } from "../../states/textStore";
 
 /**
  * Stats of text. It Works incorrect, should be fixed in the next patches. 
+ * TODO: Japanese stats should work.
  * @param params japanese array of words in current text if appropriate. 
  * @returns component with stats
  */

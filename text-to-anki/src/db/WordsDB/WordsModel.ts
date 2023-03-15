@@ -1,7 +1,9 @@
 import { wordDB, wordsInDb } from "./connectWordDB";
 
 
-
+/**
+ * queries to words DB
+ */
 export class wordsModel {
 
     async  setTranslate(word:string, translate:string){

@@ -10,6 +10,10 @@ import { useCheckTextVersion } from "./hooks/useCheckTextVersion";
 import { useCurrentPage } from "./hooks/useCurrentPage";
 import { usePrepareSpacedText } from "./hooks/usePrepareSpacedText";
 
+/**
+ * 
+ * @returns template of text with spaces, that will be displayed in addedText component 
+ */
 const TextViewSpaced =()=>{
     const [settingsVer] = useSettingsVersion();
     const fontSize = SettingsStore(s=>s.fontSize);

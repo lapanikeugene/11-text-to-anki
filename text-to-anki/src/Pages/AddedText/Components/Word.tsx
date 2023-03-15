@@ -4,13 +4,13 @@ import { TextStyles } from "../../_assets/css/TextStyles";
 import { AddedTextStore } from "../Store/AddedTextStore";
 import { PopupStore } from "../Store/PopupStore";
 import { defaultWordColor, levelsOfWordColors } from "./WordSettings";
+
+type Props= {word:string,mode?:string,fontSize:string}
 /**
  * component of every word of text 
- * 
+ * Wrap every word in addedText component
  * 
  */
-type Props= {word:string,mode?:string,fontSize:string}
-
 const Word = (params:Props)=>{
     
     //  [] are used to define a character set
@@ -35,6 +35,7 @@ const Word = (params:Props)=>{
 
     useEffect(()=>{
         const r = async()=>{
+                      {/* TODO: check Regs class */}
             const word =params.mode==='js' ? params.word : params.word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
             const wordFromDb =await WordsModel.getWord(word.trim());  
             // console.log("check word: |",word,"|; result: ", wordFromDb);
@@ -81,16 +82,17 @@ const Word = (params:Props)=>{
     const handlMouseOver= async(event:React.MouseEvent )=>{
         // console.log("mouse over",event.clientX,event.clientY);
       
-      
+          {/* TODO: check Regs class */}
         const word =params.mode==='js' ? params.word : params.word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLocaleLowerCase();
         const wordInfo = await (await WordsModel.getWord(word));
         // console.log(wordInfo);
         updateWordData(word,wordInfo.translate,wordInfo.level)
-        const upX= window.innerWidth <500 ? 200 : event.clientX   
+        const upX= window.innerWidth <500 ? 200 : event.clientX   // responsively show popup. 
         setXY(upX,event.clientY+window.scrollY);
     }
 
     return(<>
+    {/* TODO: check Regs class */}
     {params.word?.match(/[【 】.,\/#!$%\^&\*;:{}=\-_`~()]/g) ? params.word.trim()+" " :
     <span className={` ${bg}  inline-block rounded-md py-1 px-2 ${cursor}  hover:font-bold  ${TextStyles.fontStyle} ${params.fontSize} `} onClick={handleClick} onMouseOver={handlMouseOver}>
         
