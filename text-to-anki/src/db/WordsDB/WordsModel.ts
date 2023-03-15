@@ -20,6 +20,11 @@ export class wordsModel {
         })
     }
 
+    /**
+     * 
+     * @param word 
+     * @returns return word's information or 'not found' 
+     */
     async getWord(word:string):Promise<wordsInDb>{
         return await wordDB.words.get({word: word.toLocaleLowerCase()}) ||{word:"not found",translate:"",level:-1,comment:""};
     }
@@ -43,11 +48,21 @@ export class wordsModel {
         return await wordDB.words.where('word').equals(word).modify((l:wordsInDb)=>l.translate="");
     }
 
+    /**
+     * 
+     * @param  array of words 
+     * @returns  array of words, that have translations. 
+     */
     async getWordsWithTranslations(words:string[]){
 
         return await wordDB.words.where('word').anyOf(words).and(item=>item.translate.length>0).toArray();
     }
 
+    /**
+     * Rest levels or words or make them at maximal level 
+     * @param words 
+     * @param level 
+     */
     async setMassLevel(words:string[],level:number=0){
         console.log(words,level);
         await wordDB.words.where('word').anyOf(words).modify((l:wordsInDb)=>l.level=level)

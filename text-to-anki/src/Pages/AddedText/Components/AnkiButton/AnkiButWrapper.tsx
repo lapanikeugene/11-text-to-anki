@@ -6,7 +6,10 @@ import { PageFilter } from "../../assets/PageFilter";
 import { AddedTextStore } from "../../Store/AddedTextStore";
 import { JapanWords } from "./assets/JapanWords";
 import { SpacedWords } from "./assets/SpacedWords";
-
+/**
+ * wrap button component to use different types of button depends on text of language
+ * @returns button component to download csv file with words from current page
+ */
 const AnkiButWrapper = ()=>{
     //baby factory pattern, think about future languages. 
     const langs =  {'jpn':JapanWords,

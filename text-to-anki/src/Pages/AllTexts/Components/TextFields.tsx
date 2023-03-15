@@ -71,6 +71,7 @@ const TextFields = ()=>{
         <tbody>
      {textsToRender.map((a,i)=>{
         return (
+            // TODO: Move colors to settings. 
             <tr  key={`text-${i}`} className={` border-b-2 border-b-slate-300 ${i%2==0?"bg-slate-200":"bg-white dark:bg-slate-300"}`}>
                 <td className="flex justify-center items-center text-base  lg:text-2xl py-4">{i+1}.</td>
                 <td className={`${tdStyle} text-sm lg:text-xl cursor-pointer hover:bg-slate-600 hover:text-white`}  onClick={handleTitle(a.content,a.title,a.lang)}><strong placeholder="Learn Text...">{a.title}</strong></td>
