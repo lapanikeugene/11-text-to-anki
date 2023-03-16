@@ -32,7 +32,7 @@ I would like to learn new technologies related to frontend stack. That's why I u
 
 ## Lessons Learned During Development
 -  How to implement dark and light modes.
--  How to use fabric design pattern. 
+-  How to use factory design pattern. 
 -  How to test app with Jest.
 -  Using zustand 
 -  Using Material UI
