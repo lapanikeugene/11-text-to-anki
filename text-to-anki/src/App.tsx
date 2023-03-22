@@ -48,7 +48,7 @@ function App() {
       <a href='mailto:info@kanji-helper.com' >Have Idea?</a>
      </div>
       {/* <hr className='dark:border-gray-900' /> */}
-      <div className='w-full h-[2px] m-2 dark:bg-gray-600 bg-slate-300 ' />
+      <div className='w-full h-[2px] m-2 dark:bg-gray-600 bg-slate-300 text-slate-800 dark:text-slate-300 ' />
       <ThemeProvider theme={theme}>
       <SiteRoute />
       </ThemeProvider>

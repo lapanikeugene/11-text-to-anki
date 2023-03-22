@@ -19,7 +19,7 @@ const DarkLightMode=()=>{
 
     }
     return(<>
-    {m==='light'    ? <button onClick={handleMode('dark')}><DarkModeIcon /></button>
+    {m==='light'    ? <button onClick={handleMode('dark')} className="bg-slate-50 text-slate-600"><DarkModeIcon /></button>
                     : <button onClick={handleMode('light')} className="bg-slate-600 text-slate-300"><LightModeIcon /></button>
     }
     </>)
