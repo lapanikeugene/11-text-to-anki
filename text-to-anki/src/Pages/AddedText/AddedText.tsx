@@ -17,6 +17,7 @@ import AnkiButWrapper from "./Components/AnkiButton/AnkiButWrapper";
 import { SettingsLocalStorageSetup } from "./assets/SettingsLocalStorageSetup";
 import { useSettingsVersion } from "./Components/TextViews/hooks/settingsVersion";
 import { SettingsStore } from "./Store/SettingsStore";
+import { LS } from "../_assets/db/LS";
 
 /**
  * 
@@ -78,10 +79,9 @@ const AddedText = ()=>{
      */
     useEffect(()=>{
         SettingsLocalStorageSetup();
-        //TODO Check LS class
-        let defParagraphs = localStorage.getItem('settings-paragraphs-per-page');
+        let defParagraphs = LS.getParagraph();
 
-        let defFontSize  = localStorage.getItem('settings-font-size');
+        let defFontSize  = LS.getFontSize();
         setFontSize(defFontSize ||'text-base');
         console.log(defParagraphs,defFontSize);
     },[])
@@ -94,11 +94,8 @@ const AddedText = ()=>{
             <MenuTop />
         </div>
 
-        {/* Settings
-        TODO: Move sidebar outside component */}
-        <div>
-            <SideBar />
-        </div>
+       
+      
         <div onMouseOut={handleMouseLeave} 
             className={`bg-white border
             border-gray-300 rounded 

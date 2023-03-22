@@ -8,6 +8,7 @@ import DarkLightMode from './Components/DarkLightMode'
 import { DarkModeState } from './Components/Store/DarkLightStore'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import React from 'react'
+import SideBar from './Pages/AddedText/Components/SideBar'
 
 function App() {
   const colorMode = DarkModeState(s=>s.mode);
@@ -51,6 +52,10 @@ function App() {
       <ThemeProvider theme={theme}>
       <SiteRoute />
       </ThemeProvider>
+      <div>
+            <SideBar /> 
+        </div>
+        
     </div>
   )
 }

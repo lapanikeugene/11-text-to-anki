@@ -34,7 +34,7 @@ const SideBar =()=>{
     
       const handleSidebarEnter = () => {
         setSidebarStyle({   transform: "translateX(0)",
-                            position: "sticky", top: "0",
+                            position: "absolute", top: "0",
                             transition: "transform 0.2s ease-out"       });
       };
     
@@ -66,7 +66,8 @@ const SideBar =()=>{
         onEnter={handleSidebarEnter}
         onExit={handleSidebarExit}
       >
-        <div className="sidebar flex flex-col gap-4 justify-start items-start p-3" style={sidebarStyle} >
+
+        <div className="sidebar flex flex-col gap-4 justify-start items-start p-3 bg-white shadow-sm rounded-sm w-screen lg:w-[300px]" style={sidebarStyle} >
           <h2 className="text-2xl">Settings</h2>
           <div>Select amount of paragraphs per page </div>
           <div className="w-100 text-center">
